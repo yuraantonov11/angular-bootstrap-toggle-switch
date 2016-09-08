@@ -1,6 +1,6 @@
 {
   "name": "angular-bootstrap-toggle-switch",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "private": false,
   "description": "Turn checkboxes and radio buttons in toggle switches.",
   "main": "./dist/js/bootstrap-switch.js",
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/yuraantonov11/angular-bootstrap-toggle-switch.git"
   },
   "author": "",
   "license": "ISC"
