@@ -1,24 +1,73 @@
-/* ========================================================================
- * bootstrap-switch - v3.3.2
- * http://www.bootstrap-switch.org
- * ========================================================================
- * Copyright 2012-2013 Mattia Larentis
- *
- * ========================================================================
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * ========================================================================
- */
-
+.ats-switch {
+  border: 1px solid;
+  cursor: pointer;
+  display: inline-block;
+  text-align: left;
+  overflow: hidden;
+  line-height: 8px;
+  min-width: 100px;
+}
+.ats-switch.disabled {
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+  cursor: default !important;
+}
+.ats-switch.disabled .switch-left,
+.ats-switch.disabled .switch-right,
+.ats-switch.disabled .knob {
+  cursor: default !important;
+}
+.ats-switch span {
+  cursor: pointer;
+  display: inline-block;
+  float: left;
+  height: 100%;
+  line-height: 20px;
+  padding: 4px;
+  text-align: center;
+  width: 33%;
+  white-space: nowrap;
+  box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+.ats-switch > div {
+  position: relative;
+  width: 150%;
+}
+.ats-switch .knob {
+  background: red;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  background-color: #f5f5f5;
+  width: 34%;
+  z-index: 100;
+}
+.ats-switch .switch-on {
+  left: 0%;
+}
+.ats-switch .switch-off {
+  left: -50%;
+}
+.ats-switch .swtich-left,
+.ats-switch .switch-right {
+  z-index: 1;
+}
+.ats-switch .switch-left {
+  color: #fff;
+  background: #005fcc;
+}
+.ats-switch .switch-right {
+  color: #333;
+  background: #f0f0f0;
+}
+.ats-switch .switch-animate {
+  transition: left 0.5s;
+  -o-transition: left 0.5s;
+  -moz-transition: left 0.5s;
+  -webkit-transition: left 0.5s;
+}
 .clearfix {
   *zoom: 1;
 }
@@ -46,9 +95,8 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-.bootstrap-switch {
+.ats-switch {
   display: inline-block;
-  direction: ltr;
   cursor: pointer;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -59,93 +107,126 @@
   text-align: left;
   overflow: hidden;
   line-height: 8px;
-  z-index: 0;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
   vertical-align: middle;
+  min-width: 100px;
   -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   -moz-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
-.bootstrap-switch .bootstrap-switch-container {
-  display: inline-block;
-  top: 0;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate3d(0, 0, 0);
-  -o-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-}
-.bootstrap-switch .bootstrap-switch-handle-on,
-.bootstrap-switch .bootstrap-switch-handle-off,
-.bootstrap-switch .bootstrap-switch-label {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  cursor: pointer;
-  display: inline-block !important;
-  height: 100%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 8px;
-  padding-right: 8px;
-  font-size: 14px;
-  line-height: 20px;
-}
-.bootstrap-switch .bootstrap-switch-handle-on,
-.bootstrap-switch .bootstrap-switch-handle-off {
+.ats-switch .knob {
   text-align: center;
-  z-index: 1;
-}
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary {
-  color: #ffffff;
+  z-index: 100;
+  width: 34%;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  color: #333;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #005fcc;
-  background-image: -moz-linear-gradient(top, #0044cc, #0088cc);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0044cc), to(#0088cc));
-  background-image: -webkit-linear-gradient(top, #0044cc, #0088cc);
-  background-image: -o-linear-gradient(top, #0044cc, #0088cc);
-  background-image: linear-gradient(to bottom, #0044cc, #0088cc);
+  background-color: #f5f5f5;
+  background-image: -moz-linear-gradient(top, #fff, #e6e6e6);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#e6e6e6));
+  background-image: -webkit-linear-gradient(top, #fff, #e6e6e6);
+  background-image: -o-linear-gradient(top, #fff, #e6e6e6);
+  background-image: linear-gradient(to bottom, #fff, #e6e6e6);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0044cc', endColorstr='#ff0088cc', GradientType=0);
-  border-color: #0088cc #0088cc #005580;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+  border-color: #e6e6e6 #e6e6e6 #bfbfbf;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #0088cc;
+  *background-color: #e6e6e6;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary:hover,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary:hover,
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary:focus,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary:focus,
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary:active,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary:active,
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary.active,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary.active,
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary.disabled,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary.disabled,
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary[disabled],
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary[disabled] {
-  color: #ffffff;
-  background-color: #0088cc;
+.ats-switch .knob:hover,
+.ats-switch .knob:focus,
+.ats-switch .knob:active,
+.ats-switch .knob.active,
+.ats-switch .knob.disabled,
+.ats-switch .knob[disabled] {
+  color: #333;
+  background-color: #e6e6e6;
+  *background-color: #d9d9d9;
+}
+.ats-switch .knob:active,
+.ats-switch .knob.active {
+  background-color: #cccccc \9;
+}
+.ats-switch span.switch-left {
+  -webkit-border-top-left-radius: 4px;
+  -moz-border-radius-topleft: 4px;
+  border-top-left-radius: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  -moz-border-radius-bottomleft: 4px;
+  border-bottom-left-radius: 4px;
+}
+.ats-switch span.switch-right {
+  color: #333;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  background-color: #f0f0f0;
+  background-image: -moz-linear-gradient(top, #e6e6e6, #fff);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e6e6e6), to(#fff));
+  background-image: -webkit-linear-gradient(top, #e6e6e6, #fff);
+  background-image: -o-linear-gradient(top, #e6e6e6, #fff);
+  background-image: linear-gradient(to bottom, #e6e6e6, #fff);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe6e6e6', endColorstr='#ffffffff', GradientType=0);
+  border-color: #fff #fff #d9d9d9;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #fff;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.ats-switch span.switch-right:hover,
+.ats-switch span.switch-right:focus,
+.ats-switch span.switch-right:active,
+.ats-switch span.switch-right.active,
+.ats-switch span.switch-right.disabled,
+.ats-switch span.switch-right[disabled] {
+  color: #333;
+  background-color: #fff;
+  *background-color: #f2f2f2;
+}
+.ats-switch span.switch-right:active,
+.ats-switch span.switch-right.active {
+  background-color: #e6e6e6 \9;
+}
+.ats-switch.switch-primary span.switch-left {
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #005fcc;
+  background-image: -moz-linear-gradient(top, #0044cc, #08c);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0044cc), to(#08c));
+  background-image: -webkit-linear-gradient(top, #0044cc, #08c);
+  background-image: -o-linear-gradient(top, #0044cc, #08c);
+  background-image: linear-gradient(to bottom, #0044cc, #08c);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0044cc', endColorstr='#ff0088cc', GradientType=0);
+  border-color: #08c #08c #005580;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #08c;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.ats-switch.switch-primary span.switch-left:hover,
+.ats-switch.switch-primary span.switch-left:focus,
+.ats-switch.switch-primary span.switch-left:active,
+.ats-switch.switch-primary span.switch-left.active,
+.ats-switch.switch-primary span.switch-left.disabled,
+.ats-switch.switch-primary span.switch-left[disabled] {
+  color: #fff;
+  background-color: #08c;
   *background-color: #0077b3;
 }
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary:active,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary:active,
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary.active,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary.active {
+.ats-switch.switch-primary span.switch-left:active,
+.ats-switch.switch-primary span.switch-left.active {
   background-color: #006699 \9;
 }
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-info,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-info {
-  color: #ffffff;
+.ats-switch.switch-info span.switch-left {
+  color: #fff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #41a7c5;
   background-image: -moz-linear-gradient(top, #2f96b4, #5bc0de);
@@ -161,31 +242,22 @@
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-info:hover,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-info:hover,
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-info:focus,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-info:focus,
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-info:active,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-info:active,
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-info.active,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-info.active,
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-info.disabled,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-info.disabled,
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-info[disabled],
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-info[disabled] {
-  color: #ffffff;
+.ats-switch.switch-info span.switch-left:hover,
+.ats-switch.switch-info span.switch-left:focus,
+.ats-switch.switch-info span.switch-left:active,
+.ats-switch.switch-info span.switch-left.active,
+.ats-switch.switch-info span.switch-left.disabled,
+.ats-switch.switch-info span.switch-left[disabled] {
+  color: #fff;
   background-color: #5bc0de;
   *background-color: #46b8da;
 }
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-info:active,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-info:active,
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-info.active,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-info.active {
+.ats-switch.switch-info span.switch-left:active,
+.ats-switch.switch-info span.switch-left.active {
   background-color: #31b0d5 \9;
 }
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-success,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-success {
-  color: #ffffff;
+.ats-switch.switch-success span.switch-left {
+  color: #fff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #58b058;
   background-image: -moz-linear-gradient(top, #51a351, #62c462);
@@ -201,31 +273,22 @@
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-success:hover,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-success:hover,
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-success:focus,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-success:focus,
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-success:active,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-success:active,
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-success.active,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-success.active,
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-success.disabled,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-success.disabled,
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-success[disabled],
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-success[disabled] {
-  color: #ffffff;
+.ats-switch.switch-success span.switch-left:hover,
+.ats-switch.switch-success span.switch-left:focus,
+.ats-switch.switch-success span.switch-left:active,
+.ats-switch.switch-success span.switch-left.active,
+.ats-switch.switch-success span.switch-left.disabled,
+.ats-switch.switch-success span.switch-left[disabled] {
+  color: #fff;
   background-color: #62c462;
   *background-color: #4fbd4f;
 }
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-success:active,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-success:active,
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-success.active,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-success.active {
+.ats-switch.switch-success span.switch-left:active,
+.ats-switch.switch-success span.switch-left.active {
   background-color: #42b142 \9;
 }
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-warning,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-warning {
-  color: #ffffff;
+.ats-switch.switch-warning span.switch-left {
+  color: #fff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #f9a123;
   background-image: -moz-linear-gradient(top, #f89406, #fbb450);
@@ -241,31 +304,22 @@
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-warning:hover,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-warning:hover,
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-warning:focus,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-warning:focus,
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-warning:active,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-warning:active,
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-warning.active,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-warning.active,
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-warning.disabled,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-warning.disabled,
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-warning[disabled],
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-warning[disabled] {
-  color: #ffffff;
+.ats-switch.switch-warning span.switch-left:hover,
+.ats-switch.switch-warning span.switch-left:focus,
+.ats-switch.switch-warning span.switch-left:active,
+.ats-switch.switch-warning span.switch-left.active,
+.ats-switch.switch-warning span.switch-left.disabled,
+.ats-switch.switch-warning span.switch-left[disabled] {
+  color: #fff;
   background-color: #fbb450;
   *background-color: #faa937;
 }
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-warning:active,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-warning:active,
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-warning.active,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-warning.active {
+.ats-switch.switch-warning span.switch-left:active,
+.ats-switch.switch-warning span.switch-left.active {
   background-color: #fa9f1e \9;
 }
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-danger,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-danger {
-  color: #ffffff;
+.ats-switch.switch-danger span.switch-left {
+  color: #fff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #d14641;
   background-image: -moz-linear-gradient(top, #bd362f, #ee5f5b);
@@ -281,239 +335,48 @@
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-danger:hover,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-danger:hover,
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-danger:focus,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-danger:focus,
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-danger:active,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-danger:active,
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-danger.active,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-danger.active,
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-danger.disabled,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-danger.disabled,
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-danger[disabled],
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-danger[disabled] {
-  color: #ffffff;
+.ats-switch.switch-danger span.switch-left:hover,
+.ats-switch.switch-danger span.switch-left:focus,
+.ats-switch.switch-danger span.switch-left:active,
+.ats-switch.switch-danger span.switch-left.active,
+.ats-switch.switch-danger span.switch-left.disabled,
+.ats-switch.switch-danger span.switch-left[disabled] {
+  color: #fff;
   background-color: #ee5f5b;
   *background-color: #ec4844;
 }
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-danger:active,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-danger:active,
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-danger.active,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-danger.active {
+.ats-switch.switch-danger span.switch-left:active,
+.ats-switch.switch-danger span.switch-left.active {
   background-color: #e9322d \9;
 }
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-default,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-default {
-  color: #333333;
+.ats-switch.switch-default span.switch-left {
+  color: #333;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
   background-color: #f0f0f0;
-  background-image: -moz-linear-gradient(top, #e6e6e6, #ffffff);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e6e6e6), to(#ffffff));
-  background-image: -webkit-linear-gradient(top, #e6e6e6, #ffffff);
-  background-image: -o-linear-gradient(top, #e6e6e6, #ffffff);
-  background-image: linear-gradient(to bottom, #e6e6e6, #ffffff);
+  background-image: -moz-linear-gradient(top, #e6e6e6, #fff);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e6e6e6), to(#fff));
+  background-image: -webkit-linear-gradient(top, #e6e6e6, #fff);
+  background-image: -o-linear-gradient(top, #e6e6e6, #fff);
+  background-image: linear-gradient(to bottom, #e6e6e6, #fff);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe6e6e6', endColorstr='#ffffffff', GradientType=0);
-  border-color: #ffffff #ffffff #d9d9d9;
+  border-color: #fff #fff #d9d9d9;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #ffffff;
+  *background-color: #fff;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-default:hover,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-default:hover,
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-default:focus,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-default:focus,
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-default:active,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-default:active,
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-default.active,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-default.active,
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-default.disabled,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-default.disabled,
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-default[disabled],
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-default[disabled] {
-  color: #333333;
-  background-color: #ffffff;
+.ats-switch.switch-default span.switch-left:hover,
+.ats-switch.switch-default span.switch-left:focus,
+.ats-switch.switch-default span.switch-left:active,
+.ats-switch.switch-default span.switch-left.active,
+.ats-switch.switch-default span.switch-left.disabled,
+.ats-switch.switch-default span.switch-left[disabled] {
+  color: #333;
+  background-color: #fff;
   *background-color: #f2f2f2;
 }
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-default:active,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-default:active,
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-default.active,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-default.active {
+.ats-switch.switch-default span.switch-left:active,
+.ats-switch.switch-default span.switch-left.active {
   background-color: #e6e6e6 \9;
-}
-.bootstrap-switch .bootstrap-switch-label {
-  text-align: center;
-  margin-top: -1px;
-  margin-bottom: -1px;
-  z-index: 100;
-  border-left: 1px solid #cccccc;
-  border-right: 1px solid #cccccc;
-  color: #333333;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #f5f5f5;
-  background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
-  background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
-  background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
-  background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
-  border-color: #e6e6e6 #e6e6e6 #bfbfbf;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #e6e6e6;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-}
-.bootstrap-switch .bootstrap-switch-label:hover,
-.bootstrap-switch .bootstrap-switch-label:focus,
-.bootstrap-switch .bootstrap-switch-label:active,
-.bootstrap-switch .bootstrap-switch-label.active,
-.bootstrap-switch .bootstrap-switch-label.disabled,
-.bootstrap-switch .bootstrap-switch-label[disabled] {
-  color: #333333;
-  background-color: #e6e6e6;
-  *background-color: #d9d9d9;
-}
-.bootstrap-switch .bootstrap-switch-label:active,
-.bootstrap-switch .bootstrap-switch-label.active {
-  background-color: #cccccc \9;
-}
-.bootstrap-switch .bootstrap-switch-handle-on {
-  -webkit-border-top-left-radius: 4px;
-  -moz-border-radius-topleft: 4px;
-  border-top-left-radius: 4px;
-  -webkit-border-bottom-left-radius: 4px;
-  -moz-border-radius-bottomleft: 4px;
-  border-bottom-left-radius: 4px;
-}
-.bootstrap-switch .bootstrap-switch-handle-off {
-  -webkit-border-top-right-radius: 4px;
-  -moz-border-radius-topright: 4px;
-  border-top-right-radius: 4px;
-  -webkit-border-bottom-right-radius: 4px;
-  -moz-border-radius-bottomright: 4px;
-  border-bottom-right-radius: 4px;
-}
-.bootstrap-switch input[type='radio'],
-.bootstrap-switch input[type='checkbox'] {
-  position: absolute !important;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  filter: alpha(opacity=0);
-  z-index: -1;
-}
-.bootstrap-switch input[type='radio'].form-control,
-.bootstrap-switch input[type='checkbox'].form-control {
-  height: auto;
-}
-.bootstrap-switch.bootstrap-switch-mini {
-  min-width: 71px;
-}
-.bootstrap-switch.bootstrap-switch-mini .bootstrap-switch-handle-on,
-.bootstrap-switch.bootstrap-switch-mini .bootstrap-switch-handle-off,
-.bootstrap-switch.bootstrap-switch-mini .bootstrap-switch-label {
-  padding: 3px 6px;
-  font-size: 10px;
-  line-height: 9px;
-}
-.bootstrap-switch.bootstrap-switch-small {
-  min-width: 79px;
-}
-.bootstrap-switch.bootstrap-switch-small .bootstrap-switch-handle-on,
-.bootstrap-switch.bootstrap-switch-small .bootstrap-switch-handle-off,
-.bootstrap-switch.bootstrap-switch-small .bootstrap-switch-label {
-  padding: 3px 6px;
-  font-size: 12px;
-  line-height: 18px;
-}
-.bootstrap-switch.bootstrap-switch-large {
-  min-width: 120px;
-}
-.bootstrap-switch.bootstrap-switch-large .bootstrap-switch-handle-on,
-.bootstrap-switch.bootstrap-switch-large .bootstrap-switch-handle-off,
-.bootstrap-switch.bootstrap-switch-large .bootstrap-switch-label {
-  padding: 9px 12px;
-  font-size: 16px;
-  line-height: normal;
-}
-.bootstrap-switch.bootstrap-switch-disabled,
-.bootstrap-switch.bootstrap-switch-readonly,
-.bootstrap-switch.bootstrap-switch-indeterminate {
-  cursor: default !important;
-}
-.bootstrap-switch.bootstrap-switch-disabled .bootstrap-switch-handle-on,
-.bootstrap-switch.bootstrap-switch-readonly .bootstrap-switch-handle-on,
-.bootstrap-switch.bootstrap-switch-indeterminate .bootstrap-switch-handle-on,
-.bootstrap-switch.bootstrap-switch-disabled .bootstrap-switch-handle-off,
-.bootstrap-switch.bootstrap-switch-readonly .bootstrap-switch-handle-off,
-.bootstrap-switch.bootstrap-switch-indeterminate .bootstrap-switch-handle-off,
-.bootstrap-switch.bootstrap-switch-disabled .bootstrap-switch-label,
-.bootstrap-switch.bootstrap-switch-readonly .bootstrap-switch-label,
-.bootstrap-switch.bootstrap-switch-indeterminate .bootstrap-switch-label {
-  opacity: 0.5;
-  filter: alpha(opacity=50);
-  cursor: default !important;
-}
-.bootstrap-switch.bootstrap-switch-animate .bootstrap-switch-container {
-  -webkit-transition: margin-left 0.5s;
-  -moz-transition: margin-left 0.5s;
-  -o-transition: margin-left 0.5s;
-  transition: margin-left 0.5s;
-}
-.bootstrap-switch.bootstrap-switch-inverse .bootstrap-switch-handle-on {
-  -webkit-border-top-left-radius: 0;
-  -moz-border-radius-topleft: 0;
-  border-top-left-radius: 0;
-  -webkit-border-bottom-left-radius: 0;
-  -moz-border-radius-bottomleft: 0;
-  border-bottom-left-radius: 0;
-  -webkit-border-top-right-radius: 4px;
-  -moz-border-radius-topright: 4px;
-  border-top-right-radius: 4px;
-  -webkit-border-bottom-right-radius: 4px;
-  -moz-border-radius-bottomright: 4px;
-  border-bottom-right-radius: 4px;
-}
-.bootstrap-switch.bootstrap-switch-inverse .bootstrap-switch-handle-off {
-  -webkit-border-top-right-radius: 0;
-  -moz-border-radius-topright: 0;
-  border-top-right-radius: 0;
-  -webkit-border-bottom-right-radius: 0;
-  -moz-border-radius-bottomright: 0;
-  border-bottom-right-radius: 0;
-  -webkit-border-top-left-radius: 4px;
-  -moz-border-radius-topleft: 4px;
-  border-top-left-radius: 4px;
-  -webkit-border-bottom-left-radius: 4px;
-  -moz-border-radius-bottomleft: 4px;
-  border-bottom-left-radius: 4px;
-}
-.bootstrap-switch.bootstrap-switch-focused {
-  border-color: rgba(82, 168, 236, 0.8);
-  outline: 0;
-  outline: thin dotted \9;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82, 168, 236, .6);
-  -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82, 168, 236, .6);
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82, 168, 236, .6);
-}
-.bootstrap-switch.bootstrap-switch-on .bootstrap-switch-label,
-.bootstrap-switch.bootstrap-switch-inverse.bootstrap-switch-off .bootstrap-switch-label {
-  -webkit-border-top-right-radius: 4px;
-  -moz-border-radius-topright: 4px;
-  border-top-right-radius: 4px;
-  -webkit-border-bottom-right-radius: 4px;
-  -moz-border-radius-bottomright: 4px;
-  border-bottom-right-radius: 4px;
-}
-.bootstrap-switch.bootstrap-switch-off .bootstrap-switch-label,
-.bootstrap-switch.bootstrap-switch-inverse.bootstrap-switch-on .bootstrap-switch-label {
-  -webkit-border-top-left-radius: 4px;
-  -moz-border-radius-topleft: 4px;
-  border-top-left-radius: 4px;
-  -webkit-border-bottom-left-radius: 4px;
-  -moz-border-radius-bottomleft: 4px;
-  border-bottom-left-radius: 4px;
 }
